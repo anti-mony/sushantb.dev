@@ -1,21 +1,17 @@
 import { Link, useStaticQuery, graphql } from "gatsby"
 import PropTypes from "prop-types"
 import Img from "gatsby-image"
-import React, { useState, Fragment } from "react"
+import React, { Fragment } from "react"
 
 import {
   AppBar,
   Toolbar,
   Button,
   Typography,
-  Hidden,
-  IconButton,
-  Menu,
-  MenuItem,
+  Hidden
 } from "@material-ui/core"
 
 import { List, Code, Fingerprint } from "@material-ui/icons"
-import MenuIcon from "@material-ui/icons/Menu"
 
 const Header = ({ siteTitle }) => {
   const imgData = useStaticQuery(graphql`
@@ -29,16 +25,6 @@ const Header = ({ siteTitle }) => {
       }
     }
   `)
-
-  const [anchorEl, setAnchorEl] = useState(null)
-
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget)
-  }
-
-  const handleClose = () => {
-    setAnchorEl(null)
-  }
 
   const navLinks = [
     {
@@ -98,28 +84,15 @@ const Header = ({ siteTitle }) => {
             <Fragment key={navItem.id}>{navItem.nav}</Fragment>
           ))}
         </Hidden>
-        <Hidden smUp>
-          <IconButton
-            className="black-color"
-            onClick={handleClick}
-            aria-label="Menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Menu
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            {navLinks.map(nav => (
-              <MenuItem onClick={handleClose} dense={true} key={nav.id}>
-                {nav.nav}
-              </MenuItem>
-            ))}
-          </Menu>
-        </Hidden>
+
       </Toolbar>
+      <Hidden smUp>
+        <Toolbar className="header-content-mobile" >
+          {navLinks.map((navItem, index) => (
+            <Fragment key={navItem.id}>{navItem.nav}<span className="iconColor">{navLinks.length - 1 !== index ? "|" : ""}</span></Fragment>
+          ))}
+        </Toolbar>
+      </Hidden>
     </AppBar>
   )
 }

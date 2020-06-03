@@ -69,6 +69,14 @@ body {
   margin: 4px 0;
 }
 
+.header-content-mobile {
+  display: flex;
+  align-items: ce;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  margin: 0 0;
+}
+
 .white-color {
   color: #fff;
 }

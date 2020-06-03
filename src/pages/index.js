@@ -37,8 +37,20 @@ const IndexPage = () => (
           {IndexList.subtitle}
         </div>
       </Typography>
+
+
+      {/* Remove if change icon */}
+      <Typography variant="body2" component="div">
+        <div className="center-text">
+          Site Icon :{" "}
+          <a href="https://icons8.com/icon/92054/puzzle">Puzzle icon by Icons8</a>
+        </div>
+      </Typography>
+
+
     </div>
   </Layout>
 )
 
 export default IndexPage
+
